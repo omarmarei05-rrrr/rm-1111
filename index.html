@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#070a1a">
+<title>For Reem 🤍</title>
+<meta name="description" content="A little 11/11 wish, made just for you.">
+
+<!-- Open Graph (WhatsApp preview). og:image must be an absolute URL: see README / deploy steps. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="For Reem 🤍">
+<meta property="og:description" content="It's 11:11. Make a wish, Ramosa ✨">
+<meta property="og:image" content="https://for-reem-1111.netlify.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://for-reem-1111.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For Reem 🤍">
+<meta name="twitter:image" content="https://for-reem-1111.netlify.app/assets/og.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070a1a'/%3E%3Cpath d='M16 26s-9-5.6-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.4-9 12-9 12z' fill='%23e8c27a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-locked">
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="nebula" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- 0 · Private lock -->
+<section id="lock" class="screen" aria-label="Private">
+  <div class="lock-card">
+    <p class="eyebrow">a little secret door</p>
+    <div class="lock-moon" aria-hidden="true"></div>
+    <h1 class="lock-q">When did we first meet?</h1>
+    <form id="lockForm" autocomplete="off" novalidate>
+      <label class="sr-only" for="lockInput">The date we first met</label>
+      <input id="lockInput" type="text" inputmode="text" enterkeyhint="go" placeholder="dd / mm / yyyy" spellcheck="false" autocapitalize="off">
+      <button type="submit" class="btn btn-gold">Open <span aria-hidden="true">✨</span></button>
+    </form>
+    <p id="lockHint" class="lock-hint" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- 1 · Intro gate -->
+<section id="gate" class="screen" aria-label="Intro" hidden>
+  <div class="gate-inner">
+    <p class="eyebrow">11 · 11</p>
+    <h1 class="gate-title">For Reem <span class="heart-emoji">🤍</span></h1>
+    <p class="ar gate-ar" lang="ar" dir="rtl">ده كله عشانك</p>
+    <button id="gateBtn" class="gate-btn" type="button">
+      <span class="gate-ring" aria-hidden="true"></span>
+      <span class="gate-label">tap to open</span>
+    </button>
+    <p class="gate-note">turn your sound on 🎧</p>
+  </div>
+</section>
+
+<main id="site" aria-hidden="true">
+
+  <!-- 2 · Live counter -->
+  <section id="since" class="section hero">
+    <p class="eyebrow reveal">Happy 11/11, Ramosa</p>
+    <h2 class="title reveal">Since the day we met…</h2>
+    <div class="counter reveal" id="counter" aria-live="off">
+      <div class="unit"><div class="digits" data-unit="d"></div><span>days</span></div>
+      <div class="unit"><div class="digits" data-unit="h"></div><span>hours</span></div>
+      <div class="unit"><div class="digits" data-unit="m"></div><span>minutes</span></div>
+      <div class="unit"><div class="digits" data-unit="s"></div><span>seconds</span></div>
+    </div>
+    <p class="sub reveal">15 February 2025, and every second since has been ours.</p>
+    <p class="ar sub-ar reveal" lang="ar" dir="rtl">ومن ساعتها وانتي الدنيا كلها</p>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- 3 · Memory timeline -->
+  <section id="memories" class="section">
+    <header class="sec-head">
+      <p class="eyebrow reveal">chapter one</p>
+      <h2 class="title reveal">Us, in frames</h2>
+      <p class="sub reveal">A few of my favourite moments with you. Tap any of them to see it up close.</p>
+    </header>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <!-- 4 · Reasons -->
+  <section id="reasons" class="section">
+    <header class="sec-head">
+      <p class="eyebrow reveal">chapter two</p>
+      <h2 class="title reveal">12 reasons I love you</h2>
+      <p class="sub reveal">Tap or swipe the card.</p>
+    </header>
+    <div class="deck-wrap reveal">
+      <div class="deck" id="deck" role="button" tabindex="0" aria-label="Next reason"></div>
+      <div class="deck-progress">
+        <span id="deckCount">1 / 12</span>
+        <div class="deck-bar"><i id="deckBar"></i></div>
+      </div>
+      <button id="deckAgain" class="btn btn-ghost" type="button" hidden>read them again</button>
+    </div>
+  </section>
+
+  <!-- 5 · 11:11 wish -->
+  <section id="wish" class="section wish">
+    <div class="wish-inner">
+      <p class="clock reveal" aria-hidden="true">11:11</p>
+      <h2 class="title reveal">It's 11:11, make a wish, Ramosa <span aria-hidden="true">✨</span></h2>
+      <button id="wishStar" class="wish-star reveal" type="button" aria-label="Hold the star to make a wish">
+        <svg class="wish-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54"/></svg>
+        <svg class="wish-shape" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 61 38 97 38 68 59 79 94 50 73 21 94 32 59 3 38 39 38Z"/></svg>
+      </button>
+      <p class="wish-hint reveal" id="wishHint">close your eyes, then tap or hold the star</p>
+      <div class="wish-msg" id="wishMsg" aria-live="polite">
+        <p>You made your wish. Want to know mine?</p>
+        <p>I don't have one tonight. It already came true. It's you, reading this right now, probably smiling.</p>
+        <p>Every 11:11 from now on, I'll wish for the same thing: more of you.</p>
+        <p class="ar" lang="ar" dir="rtl">انتي الأمنية اللي اتحققت 🤍</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Letter -->
+  <section id="letter" class="section">
+    <header class="sec-head">
+      <p class="eyebrow reveal">chapter three</p>
+      <h2 class="title reveal">A letter for you</h2>
+    </header>
+    <article class="paper reveal" id="paper" aria-label="Letter from Omar">
+      <div class="seal" aria-hidden="true">O<span>&amp;</span>R</div>
+      <div class="letter-body" id="letterBody"></div>
+      <div class="letter-sign" id="letterSign">
+        <p class="sign-love">I love you, Ramosa</p>
+        <p class="sign-name">Omar</p>
+      </div>
+      <p class="letter-skip" id="letterSkip">tap the letter to show it all</p>
+    </article>
+  </section>
+
+  <!-- 7 · Ending -->
+  <footer id="end" class="section end">
+    <p class="ar end-ar reveal" lang="ar" dir="rtl">ربنا يخليكي ليا</p>
+    <p class="end-line reveal">Happy 11/11, my wish come true.</p>
+    <button id="replay" class="btn btn-ghost reveal" type="button"><span aria-hidden="true">↺</span> replay</button>
+    <p class="made reveal">made with love by Omar <span aria-hidden="true">🤍</span></p>
+  </footer>
+</main>
+
+<!-- Music -->
+<div id="player" class="player" hidden>
+  <button id="muteBtn" type="button" aria-label="Mute music" aria-pressed="false">
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="np"><small>now playing</small><b>Kelama · Ramy Sabry</b></span>
+  </button>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lb-track" id="lbTrack"></div>
+  <p class="lb-cap" id="lbCap"></p>
+  <p class="lb-count" id="lbCount"></p>
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous photo">‹</button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next photo">›</button>
+</div>
+
+<audio id="song" src="assets/audio/kelama.mp3" preload="none" loop playsinline></audio>
+<script src="js/content.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
